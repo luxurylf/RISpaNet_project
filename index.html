@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description"
+          content="Rotation Invariant Spatial Networks for Single-View Point Cloud Classification">
+    <meta name="keywords" content="Rotation Invariant, Single-View, Point Cloud">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rotation Invariant Spatial Networks for Single-View Point Cloud Classification</title>
+  
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+  
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+  
+      gtag('js', new Date());
+  
+      gtag('config', 'G-PYVRSFMDRL');
+    </script>
+  
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+          rel="stylesheet">
+  
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" href="./static/images/favicon.svg">
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+    <style>
+      body {
+          margin: 0;
+          padding: 10px; /* 页面两边的间距 */
+          font-family: Arial, sans-serif;
+      }
+
+      section {
+          margin-bottom: 5px; /* 每个section之间的间距 */
+      }
+
+      /* Section 1 样式 */
+      .section1 {
+          /* background-color: #f0f8ff; */
+          padding: 5px;
+          /* border-left: 5px solid #007BFF; */
+          font-size: 20px; /* 字体大小 */
+          font-weight: bold; /* 字体粗体 */
+      }
+
+      /* Section 2 样式 */
+      .section2 {
+          /* background-color: #f8d7da; */
+          padding: 10px;
+          /* border-left: 5px solid #dc3545; */
+          font-size: 8px; /* 字体大小 */
+          font-weight: bold; /* 字体粗体 */
+          color: #2b06d0;
+          margin-top: 3px;
+      }
+
+      /* Section 3 样式 */
+      .section3 {
+          /* background-color: #f8d7da; */
+          padding: 0 2px;
+          /* border-left: 5px solid #dc3545; */
+          font-size: 8px; /* 字体大小 */
+          font-weight: bold; /* 字体粗体 */
+          color: #220202;
+      }
+      .sectionab {
+      /* 你可以根据需要调整section的外边距 */
+      margin: 4px;
+      color: #220202;
+    }
+ 
+    .publication-abs {
+      text-align: justify; /* 设置文本两端对齐 */
+      font-size: 20px; /* 设置字体大小 */
+      padding: 0 5px; 
+      font-weight: bold
+      /* 如果需要上下内边距，可以添加类似下面的行 */
+      /* margin-top: 10px; */
+      /* margin-bottom: 10px; */
+    }
+
+ 
+    .publication-text {
+      text-align: justify; /* 设置文本两端对齐 */
+      font-size: 25px; /* 设置字体大小 */
+      padding: 0px 2px; /* 增加上下和左右的内边距，左右设置为40px以增加两端距离 */
+      font-weight: bold; /* 字体加粗 */
+      /* 如果需要上下外边距，可以添加类似下面的行 */
+      /* margin-top: 10px; */
+      /* margin-bottom: 10px; */
+      line-height: 1.6; /* 可选：增加行高以提高可读性 */
+    }
+/* 
+      .img {
+              margin-top: 1px; 
+            }
+          
+            .img img {
+              max-width: 60%; 
+              height: auto;
+            }
+          
+            .img .content {
+              margin-top: 3px; 
+              font-size: 5px;
+              text-align: center;
+              line-height: 1.6; 
+            } */
+    .img img {
+        max-width: 40%;
+        /* width: 1200px;  */
+        height: auto; /* 保持图片宽高比 */
+      }
+ 
+  /* 设置当前 section 与上一个 section 的间距 */
+      .img {
+        margin-top: 1px; /* 调整间距大小，例如 20px */
+      }
+   
+  </style>
+  </head>
+<body>
+  <section class="section1">
+    
+    <!-- <div style="display: flex; justify-content: center; align-items: center;">  
+      <img src="./static/images/vistac_fengmian.png" alt="Centered Image"/>  
+    </div> -->
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <!-- 标题 -->
+            <h1 class="title is-1 publication-title">Rotation Invariant Spatial Networks for Single-View Point Cloud Classification</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section2">
+
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Feng Luan, </span>
+              <span class="author-block">Jiarui Hu, </span>
+              <span class="author-block">Changshi Zhou, </span>
+              <span class="author-block">Zhipeng Wang, </span>
+              <span class="author-block">Jiguang Yue, </span>
+              <span class="author-block">Yanmin Zhou, </span>
+              <span class="author-block">Bin He</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="section2">
+
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">Shanghai Research Institute for Intelligent 
+                  Autonomous Systems</span>
+                <span class="author-block">National 
+                  Key Laboratory of Autonomous Intelligent Unmanned Systems, Tongji 
+                  University</span>
+                <span class="author-block">Frontiers Science 
+                  Center for Intelligent Autonomous Systems</span>
+                <span class="author-block">College of Electronics and Information Engineering, Tongji 
+                  University</span>
+              </div>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="column has-text-centered">
+      <div class="publication-links">
+
+        <!-- <span class="link-block">
+          <a href="https://arxiv.org/abs/2011.12948"
+             class="external-link button is-normal is-rounded is-dark">
+            <span class="icon">
+                <i class="ai ai-arxiv"></i>
+            </span>
+            <span>arXiv</span>
+          </a>
+        </span> -->
+
+        <!-- Code Link. -->
+        <span class="link-block">
+          <a href="https://github.com/luxurylf/RISpaNet-"
+             class="external-link button is-normal is-rounded is-dark">
+            <span class="icon">
+                <i class="fab fa-github"></i>
+            </span>
+            <span>Code</span>
+            </a>
+        </span>
+       
+      </div>
+    </div>
+  </section>
+  <section class="sectionab">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <div class="is-size-8 publication-abs">
+              Abstract:     Point cloud classification is critical for three-dimensional scene understanding. 
+              However, in real-world scenarios, depth cameras often capture partial, single-view point clouds of objects 
+              with different poses, making their accurate classification a challenge. In this paper, we propose a novel point cloud 
+              classification network that captures the detailed spatial structure of objects by constructing tetrahedra, which is 
+              different from point-wise operations. Specifically, we propose a RISpaNet block to extract rotation-invariant features. 
+              A rotation-invariant property generation module is designed in RISpaNet for constructing rotation-invariant tetrahedron 
+              properties (RITPs). Meanwhile, a multi-scale pooling module and a hybrid encoder are used to process RITPs to generate integrated 
+              rotation-invariant features. Further, for single-view point clouds, a complete point cloud auxiliary branch and a part-whole 
+              correlation module are jointly employed to obtain complete point cloud features from partial point clouds. Experimental results
+               show that this network performs better than other state-of-the-art methods, evaluated on four public datasets. We achieved an 
+               overall accuracy of 94.7\% (+2.0\%) on ModelNet40, 93.4\% (+5.9\%) on MVP, 94.7\% (+6.3\%) on PCN and 94.8\% (+1.7\%) on ScanObjectNN. 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <section class="img">
+    <div style="display: flex; justify-content: center; align-items: center;">  
+      <img src="./static/images/fig2.png" alt="Centered Image"/>  
+    </div>
+
+  </section>
+  <section class="publication-text">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Fig. 1: The process of constructing rotation-invariant tetrahedron properties. </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="publication-text">
+    <div style="display: flex; justify-content: center; align-items: center;">  
+      <img src="./static/images/mambablock.png" alt="Centered Image" style="width: 1000px; height: auto;" />  
+    </div>
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Fig. 2:  RISpaNet block structure. RISpaNet consists of three modules: 
+                the rotation-invariant property generation module (RIPGM), the multi-scale pooling module (MSPM) and the hybrid encoder.
+                 The RIPGM is used to generate the rotational-invariant tetrahedron properties (RITP). The multi-scale pooling module is applied 
+                 to process the RITP to obtain multi-scale features. 、
+                The hybrid encoder is designed to extract the integrated rotational-invariant features. </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="img">
+    <div style="display: flex; justify-content: center; align-items: center;">  
+      <img src="./static/images/fig5.png" alt="Centered Image"/>  
+    </div> 
+  </section>
+
+  <section class="publication-text">
+
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Fig. 3:  Two-branch structure. The proposed network contains two branches: 
+                the partial point cloud branch (PPCB) and the complete point cloud auxiliary branch (CPCAB). 
+                PPCB is used to extract the rotation-invariant features of single-view point clouds. 
+                CPCAB is used to extract the rotation-invariant features of complete point clouds. 
+                A part-whole correlation module (PWCM) is used to construct the link between the 
+                complete and partial features to get the predicted complete point cloud features. 
+                Decoder is used to output the classification results. </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+
+  <section class="sectionab">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <div class="is-size-15 publication-abs">
+              Contributions:
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <div class="is-size-8 publication-abs">
+              *Rotation-invariant Tetrahedron Properties. A highly expressive rotation-invariant property is designed by constructing local tetrahedra to capture spatial information of objects.
+        
+            </div>
+            <div class="is-size-8 publication-abs">
+              *RISpaNet. RISpaNet is a fundamental block in our model. This block includes a rotation-invariant property generation module, a multi-scale pooling module and a hybrid encoder. Different coding mechanisms are embedded in the hybrid encoder to extract the integrated rotation-invariant features from RITPs.
+            </div>
+            <div class="is-size-8 publication-abs">
+              *Two-branch design. The complete point cloud auxiliary branch is designed to acquire complete point cloud features during the training phase. The part-whole correlation module is used to achieve the mapping from missing point cloud features to complete point cloud features. The two-branch structure can improve the single-view point cloud classification accuracy.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  <!-- <section class="publication-text">
+    <div style="display: flex; justify-content: center; align-items: center;">  
+      <img src="./static/images/visual.jpg" alt="Centered Image"/>  
+    </div>
+    <div style="display: flex; justify-content: center; align-items: center;">  
+      <img src="./static/images/viaual1.jpg" alt="Centered Image"/>  
+    </div>
+  </section> -->
+
+
+
+
+  
+  <style>
+    /* 确保所有文字居中 */
+    .has-text-centered {
+      text-align: center;
+    }
+   
+    /* 去掉作者名字的超链接样式，仅保留文本 */
+    .publication-authors .author-block a {
+      text-decoration: none; /* 去掉下划线 */
+      color: inherit;         /* 继承父元素颜色 */
+      pointer-events: none;   /* 禁用鼠标事件，防止点击 */
+      cursor: default;        /* 鼠标指针变为默认样式 */
+    }
+   
+    /* 可选：优化链接按钮的显示，使整体看起来更整齐 */
+    .publication-links .link-block {
+      margin: 0 5px;
+    }
+  </style>
+</body>
+</html>
